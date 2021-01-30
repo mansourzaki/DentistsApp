@@ -1,9 +1,13 @@
 import 'package:dentist_app/models/appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+final cc= {
+'Diabtes',
+'Blood Pressure'
+};
 class Patient {
   final String firstName;
+  final String middleName;
   final String lastName;
   final DateTime dateOfBirth;
   final String gender;
@@ -15,14 +19,16 @@ class Patient {
   //int _age;
   Patient({
     @required this.firstName,
+    @required this.middleName,
     @required this.lastName,
     @required this.dateOfBirth,
     @required this.gender,
   });
+  
 
   String get getDateOfBirth => DateFormat("yMMMMd").format(dateOfBirth);
 
-  String get name => firstName + " " + lastName;
+  String get name => firstName + " " + middleName + " " + lastName;
   List<Appointment> get appointmentsList => [...appointmentslist];
 
   addNewAppointment(Appointment appointmnt) {
@@ -32,6 +38,7 @@ class Patient {
   set setPhoneNumber(String phoneNumber) => this.phoneNumber = phoneNumber;
 
   int get age {
+   
     return DateTime.now().year - dateOfBirth.year;
   }
 }
